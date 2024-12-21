@@ -1,4 +1,4 @@
-from app.services.database import MySQLPool
+from app.connectionPool.pool import MySQLPool
 
 mysql_pool = MySQLPool()
 

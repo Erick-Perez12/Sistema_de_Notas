@@ -73,16 +73,16 @@ INSERT INTO Usuarios (nombre, email, contrasena, rol, cuenta_activa) VALUES
 
 -- Inserción de notas para estudiantes
 INSERT INTO Notas (estudiante_id, materia, calificacion, semestre) VALUES
-(6, 'Matemáticas', 85.5, '2024-1'),
-(6, 'Física', 90.0, '2024-1'),
-(7, 'Química', 78.0, '2024-1'),
-(7, 'Biología', 88.0, '2024-1'),
-(8, 'Historia', 92.5, '2024-1'),
-(8, 'Geografía', 80.0, '2024-1'),
-(9, 'Inglés', 75.0, '2024-1'),
-(9, 'Literatura', 85.0, '2024-1'),
-(10, 'Arte', 95.0, '2024-1'),
-(10, 'Música', 89.0, '2024-1');
+(6, 'Matemáticas', 11.5, '2024-1'),
+(6, 'Física', 14.0, '2024-1'),
+(7, 'Química', 18.0, '2024-1'),
+(7, 'Biología', 18.0, '2024-1'),
+(8, 'Historia', 19.5, '2024-1'),
+(8, 'Geografía', 10.0, '2024-1'),
+(9, 'Inglés', 15.0, '2024-1'),
+(9, 'Literatura', 15.0, '2024-1'),
+(10, 'Arte', 15.0, '2024-1'),
+(10, 'Música', 11.0, '2024-1');
 
 -- Inserción de roles
 INSERT INTO Roles (nombre_rol, descripcion) VALUES
