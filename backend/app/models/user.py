@@ -1,3 +1,4 @@
+import bcrypt
 from app.connectionPool.pool import MySQLPool
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -17,7 +18,10 @@ class UserModel:
         result = mysql_pool.execute(sql, (email,))
         if result:
             user_data = result[0]
-            return cls(*user_data)  # Unpack result into the User object
+            user_data = list(user_data)
+            user_data[3] = user_data[3].decode('utf-8') if isinstance(user_data[3], (bytes, bytearray)) else user_data[3]
+            print(user_data)
+            return user_data
         return None
 
     @classmethod
@@ -33,9 +37,10 @@ class UserModel:
     def add_user(cls, nombre, email, contrasena, rol):
         sql = """
             INSERT INTO Usuarios (nombre, email, contrasena, rol)
-            VALUES (%s, %s, AES_ENCRYPT(%s, 'secret_key'), %s)
+            VALUES (%s, %s, %s, %s)
         """
         mysql_pool.execute(sql, (nombre, email, contrasena, rol), commit=True)
+        return True
 
     def check_password(self, password):
         # Decrypt the stored password and check against the provided password

@@ -8,7 +8,7 @@ CREATE TABLE Usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
-    contrasena VARBINARY(255) NOT NULL, -- Contraseña encriptada
+    contrasena VARCHAR(255) NOT NULL, -- Contraseña encriptada
     rol ENUM('administrador', 'profesor', 'estudiante') NOT NULL,
     cuenta_activa BOOLEAN DEFAULT TRUE, -- Indicador de si la cuenta está activa
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -60,16 +60,16 @@ CREATE TABLE AuditoriaInicioSesion (
 
 -- Inserción de cuentas de usuarios
 INSERT INTO Usuarios (nombre, email, contrasena, rol, cuenta_activa) VALUES
-('Admin1', 'admin1@universidad.edu', AES_ENCRYPT('password1', 'secret_key'), 'administrador', TRUE),
-('Admin2', 'admin2@universidad.edu', AES_ENCRYPT('password2', 'secret_key'), 'administrador', TRUE),
-('Profesor1', 'profesor1@universidad.edu', AES_ENCRYPT('password3', 'secret_key'), 'profesor', TRUE),
-('Profesor2', 'profesor2@universidad.edu', AES_ENCRYPT('password4', 'secret_key'), 'profesor', TRUE),
-('Profesor3', 'profesor3@universidad.edu', AES_ENCRYPT('password5', 'secret_key'), 'profesor', TRUE),
-('Estudiante1', 'estudiante1@universidad.edu', AES_ENCRYPT('password6', 'secret_key'), 'estudiante', TRUE),
-('Estudiante2', 'estudiante2@universidad.edu', AES_ENCRYPT('password7', 'secret_key'), 'estudiante', TRUE),
-('Estudiante3', 'estudiante3@universidad.edu', AES_ENCRYPT('password8', 'secret_key'), 'estudiante', TRUE),
-('Estudiante4', 'estudiante4@universidad.edu', AES_ENCRYPT('password9', 'secret_key'), 'estudiante', TRUE),
-('Estudiante5', 'estudiante5@universidad.edu', AES_ENCRYPT('password10', 'secret_key'), 'estudiante', TRUE);
+('Admin1', 'admin1@universidad.edu', '$2b$12$.YVD5KN7NRt.UM0uztSu5uNM3WbsJjgw8Ql0plDJtQ504Oacw6RU.', 'administrador', TRUE),
+('Admin2', 'admin2@universidad.edu', '$2b$12$lULyLr0riqrzgwAs971h8eeW3ov0GVXIzof8VWI4D5BV7VRpahtVa', 'administrador', TRUE),
+('Profesor1', 'profesor1@universidad.edu', '$2b$12$ZmQQFNbI6EqYp0ReCwhAL..kjg1Rar/r.a0hHinLfiCn2TWApeA9G', 'profesor', TRUE),
+('Profesor2', 'profesor2@universidad.edu', '$2b$12$DUYKtZHRB5dw9jJMGsjAF.5bLugafD8Qn7F4KUpIGi4HJktcevDL2', 'profesor', TRUE),
+('Profesor3', 'profesor3@universidad.edu', '$2b$12$FK4LX7QgDTB63lMdjIim7uWg9937yTzaUq09wu03/C7NalMrkpQCW', 'profesor', TRUE),
+('Estudiante1', 'estudiante1@universidad.edu', '$2b$12$UqNj/cmcq9TDUqnGX7jkKOho9FjiPcr3v7I/I3wogMh8U0J8KJJxe', 'estudiante', TRUE),
+('Estudiante2', 'estudiante2@universidad.edu', '$2b$12$XMOOet47ZUUwLN1KfheEn.fHUMCCqCAQGT45bAPhIVKn.c3KyOQOu', 'estudiante', TRUE),
+('Estudiante3', 'estudiante3@universidad.edu', '$2b$12$HxsPHk/BNdyXdthfnbon6eDBuHUXZUimx/rK7DaLvH5LMR.vOIAP6', 'estudiante', TRUE),
+('Estudiante4', 'estudiante4@universidad.edu', '$2b$12$iNmOnV4hIzRLoXVJ6A21PumBYb7cEKqdVDy5SHEz9rimcAdOuRVoy', 'estudiante', TRUE),
+('Estudiante5', 'estudiante5@universidad.edu', '$2b$12$cp7yHgLFLzm8DM.BYGsmp.fZWa9vOavxve/HFgJZZP2nMZaT842aS', 'estudiante', TRUE);
 
 -- Inserción de notas para estudiantes
 INSERT INTO Notas (estudiante_id, materia, calificacion, semestre) VALUES

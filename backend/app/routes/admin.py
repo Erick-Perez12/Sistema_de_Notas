@@ -11,6 +11,8 @@ def admin_dashboard():
 
 @admin_bp.route('/manage-users', methods=['POST'])
 @permission_required(3)  # Solo administradores pueden gestionar usuarios
+
 def manage_users():
+    
     # Lógica de gestión de usuarios
     return jsonify({"message": "Users managed successfully"}), 200
